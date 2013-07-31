@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Meetr</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+   <div class="navbar navbar-inverse navbar-fixed-top bs-docs-nav">
+
+    <a href="./" class="navbar-brand">Generic App</a>
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <div class="nav-collapse collapse bs-navbar-collapse">
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <% if user_signed_in? %> Signed in as <%= current_user.email %>. Not you?
+        </li>
+        <li>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        </li>
+          <% else %>
+        <li>
+          <%= link_to "Sign up", new_user_registration_path %>
+        </li>
+        <li>
+          <%= link_to "Sign in", new_user_session_path %>
+        </li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+  <div class="bs-header">
+    <h1 class="text-center">This is a starter app!</h1>
+    <p class="lead text-center">Perhaps you should make a real app with this...</p>
+  </div>
+</div>
+
+<div class="container">
+<!-- <div class="offset-col-6 col-sm-6 col-lg-6 center"> -->
+<%= yield %>
+<!-- </div> -->
+</div>
+</body>
+</html>
